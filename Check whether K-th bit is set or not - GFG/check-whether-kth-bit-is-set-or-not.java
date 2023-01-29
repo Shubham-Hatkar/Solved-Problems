@@ -15,8 +15,8 @@ class CheckBit
     static boolean checkKthBit(int n, int k)
     {
         int mask = (1 << k);
-		boolean set = ((mask & n) != 0);
-		return set;
+		return ((mask & n) != 0);
+		 
     }
     
 }
