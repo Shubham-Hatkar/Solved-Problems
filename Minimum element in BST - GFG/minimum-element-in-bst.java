@@ -115,6 +115,6 @@ class Tree {
             if(curr.left != null) curr = curr.left;
             else break;
         }
-        return prevCurr.data;
+        return curr.data;
     }
 }
