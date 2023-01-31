@@ -37,14 +37,14 @@ class Solution
             freq[s.charAt(end)]++;
             if(freq[s.charAt(end)] == 1) unique++;
             end++;
-            if(unique == k) len = Math.max(len, end-start);
+            
             while(start < end && unique > k)
             {
                 freq[s.charAt(start)]--;
                 if(freq[s.charAt(start)] == 0) unique--;
                 start++;
             }
-            
+            if(unique == k) len = Math.max(len, end-start);
         }
         return len;
     }
