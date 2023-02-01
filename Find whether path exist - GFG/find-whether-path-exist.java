@@ -38,28 +38,19 @@ class Solution
     {
         int n = grid.length;
         
-        Queue<int[]> q = new LinkedList<>();
-        q.add(new int[]{sr,sc});
+        if(grid[sr][sc] == 2) return true;
         vis[sr][sc] = true;
         
-        while(q.size() > 0)
+        for(int i = 0; i < 4; i++)
         {
-            int temp[] = q.remove();
-            int r = temp[0];
-            int c = temp[1];
-            if(grid[r][c] == 2) return true;
+            int nr = sr + dir[i][0];
+            int nc = sc + dir[i][1];
             
-            for(int i = 0; i < 4; i++)
+            if(nr >= n || nc >= n || nr < 0 || nc < 0) continue;
+            if(vis[nr][nc] == false && grid[nr][nc] != 0)
             {
-                int nr = r + dir[i][0];
-                int nc = c + dir[i][1];
-                
-                if(nr >= n || nc >= n || nr < 0 || nc < 0) continue;
-                if(vis[nr][nc] == false && grid[nr][nc] != 0)
-                {
-                   q.add(new int[]{nr,nc});
-                   vis[nr][nc] = true;
-                }
+                boolean check = DFS(nr, nc, grid, vis);
+                if(check == true) return true;
             }
         }
         return false;
