@@ -59,7 +59,6 @@ class Solution
         int minPages = 0;
         int totalPages = 0;
         
-        // Findig maxPages and total no. of pages.
         for(int i = 0; i < N; i++)
         {
             minPages = Math.min(minPages,arr[i]);
@@ -69,7 +68,6 @@ class Solution
         // If students are > books
         if(M > N) return -1;
         
-        // Simple Bindary Search
         int start = minPages;
         int end = totalPages;
         int ans = -1;
