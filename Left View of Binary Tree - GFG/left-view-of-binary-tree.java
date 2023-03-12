@@ -133,6 +133,14 @@ class Tree
         solve(root.left,ans,level);
         solve(root.right,ans,level);
     }
+    private void DFS(Node root, ArrayList<Integer> ans, int level)
+    {
+        if(root == null) return;
+        if(root != null && ans.size() == level) ans.add(root.data);
+        level++;
+        DFS(root.left, ans, level);
+        DFS(root.right, ans, level);
+    }
     private void BFS(Node root, ArrayList<Integer> ans)
     {
         Queue<Node> q = new LinkedList<>();
@@ -157,8 +165,8 @@ class Tree
     {
         ArrayList<Integer> ans = new ArrayList<>();
         if(root == null) return ans;
-        //solve(root,ans,0);
-        BFS(root, ans);
+        //BFS(root, ans);
+        DFS(root, ans, 0);
         return ans;
     }
 }
