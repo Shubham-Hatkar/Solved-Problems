@@ -25,27 +25,28 @@ class Solution
 {
     public int longestkSubstr(String s, int k) 
     {
-        int n = s.length();
-        int freq[] = new int[123];
+        int ans = -1;
         int start = 0;
         int end = 0;
+        int freq[] = new int[26];
+        int n = s.length();
         int unique = 0;
-        int len = -1;
         
         while(end < n)
         {
-            freq[s.charAt(end)]++;
-            if(freq[s.charAt(end)] == 1) unique++;
+            freq[s.charAt(end) - 'a']++;
+            if(freq[s.charAt(end) - 'a'] == 1) unique++;
             end++;
             
             while(start < end && unique > k)
             {
-                freq[s.charAt(start)]--;
-                if(freq[s.charAt(start)] == 0) unique--;
+                freq[s.charAt(start) - 'a']--;
+                if(freq[s.charAt(start) - 'a'] == 0) unique--;
                 start++;
             }
-            if(unique == k) len = Math.max(len, end-start);
+            if(unique == k)
+            ans = Math.max(ans, end - start);
         }
-        return len;
+        return ans;
     }
 }
