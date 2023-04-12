@@ -43,15 +43,11 @@ class Solution{
     {
         int start = 0;
         int end = n - 1;
-        int ans = 0;
-        
-        if(arr[start] > x) return -1;
-        
+        int ans = -1;
         while(start <= end)
         {
             int mid = (start + end) / 2;
-            if(arr[mid] == x) return mid;
-            if(arr[mid] < x) 
+            if(arr[mid] <= x)
             {
                 ans = mid;
                 start = mid + 1;
