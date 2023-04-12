@@ -33,23 +33,24 @@ public class GFG
 
 class Solution
 {
-    int findMax(int arr[])
+    int FindPeak(int arr[])
     {
-        int n = arr.length;
         int start = 0;
-        int end = n - 1;
+        int end = arr.length - 1;
         
         while(start <= end)
         {
             int mid = (start + end) / 2;
-            if(mid + 1 < n && arr[mid] > arr[mid + 1]) return mid;
+            if(mid + 1 < arr.length && arr[mid] > arr[mid+1]) return mid;
             else if(arr[start] <= arr[mid]) start = mid + 1;
             else end = mid - 1;
         }
-        return n-1;
+        return arr.length - 1;
     }
     int findMin(int arr[], int n)
     {
-        return arr[(findMax(arr) == n-1) ? 0 : findMax(arr) + 1];
+        int peak = FindPeak(arr);
+        if(peak == n - 1) return arr[0];
+        return arr[peak + 1];
     }
 }
