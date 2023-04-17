@@ -137,12 +137,31 @@ class Tree
         int right = solve(root.right);
         if(right == -1) return -1;
         if(Math.abs(left - right) > 1) return -1;
-        return Math.max(left,right) + 1;
+        return Math.max(left, right) + 1;
     }
     //Function to check whether a binary tree is balanced or not.
     boolean isBalanced(Node root)
     {
+	    if(root == null) return true;
 	    return (solve(root) == -1) ? false : true;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
